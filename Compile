@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+if [ "$1" == "Linux" ]
+then
+	echo "Compiling for Linux"
+	#perl -i -pe 's/define plataform_autoreplaced_by_command_line/define Linux/g' ./Shared/SysLink.h
+	g++ --std=c++14 -pthread -o out.out Main.cpp MD5Lib/md5.cpp
+	#perl -i -pe 's/define Linux/define plataform_autoreplaced_by_command_line/g' ./Shared/SysLink.h
+elif [ "$1" == "Windows" ]
+then
+	echo "Compiling for Windows"
+	#perl -i -pe 's/define plataform_autoreplaced_by_command_line/define WIN_32/g' ./Shared/SysLink.h
+	g++ --std=c++14  -o out.exe Main.cpp MD5Lib/md5.cpp
+	#perl -i -pe 's/define WIN_32/define plataform_autoreplaced_by_command_line/g' ./Shared/SysLink.h
+else
+	echo "Invalid platarform. Use Linux or Windows (or read this files and compile the project by yourself :D)"
+fi
